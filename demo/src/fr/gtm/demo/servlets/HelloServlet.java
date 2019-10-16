@@ -2,6 +2,8 @@ package fr.gtm.demo.servlets;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Enumeration;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/HelloServlet")
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger LOG = Logger.getLogger("DEMO");
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,6 +27,11 @@ public class HelloServlet extends HttpServlet {
 		String nom = request.getParameter("nom");
 		if(nom==null) {
 			nom = "Jean-Pierre";
+		}
+		Enumeration<String> fields = request.getParameterNames();
+		while(fields.hasMoreElements()) {
+			String field = fields.nextElement();
+			LOG.info(field+" "+request.getParameter(field));
 		}
 		out.append("<html><head><title>Hello ")
 			.append(nom)

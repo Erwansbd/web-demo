@@ -1,0 +1,25 @@
+label
+{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100px;
+}
+div{
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+body{
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(0deg, #9B1B30,#FF6F61 ); /* Standard syntax (must be last) */
+}
+button {
+	display: flex;
+	justify-content: center;
+}
+
+
