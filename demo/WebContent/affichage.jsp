@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,21 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	String nom = request.getParameter("nom");
-	String email = request.getParameter("email");
-	String email2 = request.getParameter("email2");
-	String objet = request.getParameter("objet");
-	String message = request.getParameter("message");
-%>
-<h2>Bonjour <%=nom%> </h2>
-<%
-	boolean ok = email.equals(email2);
-if(!ok) {
-%>
-	<h4>Votre email est faux</h4>
-<% 
-}
-%>
-</body>
+
+<h2>Bonjour ${param['nom']} </h2>
+<c:if test="${param['email'] ne param['email2'] }">
+	les emails ne sont pas les mêmes !!
+</c:if>
+<ul>
+<c:forEach begin="1" end="10" var="i" varStatus="st">
+	<li>item : ${st.first }</li>
+</c:forEach>
+</ul>
+<body>
 </html>
